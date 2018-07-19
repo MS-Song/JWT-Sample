@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+ 
+  <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+  </contextListener>
+ 
+  <!-- To enable JMX Management -->
+  <jmxConfigurator/>
+ 
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+    </encoder>
+  </appender>
+ 
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>./logs/service.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>./logs/service.%d{yyyy-MM-dd}.log</fileNamePattern>
+ 
+      <!-- keep 30 days' worth of history -->
+      <maxHistory>180</maxHistory>
+    </rollingPolicy>
+ 
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+    </encoder>
+  </appender>
+ 
+  <root level="info">
+    <appender-ref ref="console"/>
+    <appender-ref ref="FILE"/>
+  </root>
+</configuration>
