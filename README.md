@@ -1,15 +1,7 @@
 ## JWT-SAMPLE
 
 ### FLOW
-```sequence
-Title : JWT Process
-Front->Backend: POST /auth/login with id, password
-Backend->Backend: Create JWT
-Backend->Front: Return JWT to Front
-Front->Backend: Send API with JWT on the Authorization Header
-Backend->Backend: JWT Check
-Backend->Front: Send Response
-```
+<img src="http://bboroccu.github.io/assets/img/jwt_flow.png" width="80%"/>
 
 ### OAUTH와의 차이점
 - OAuth는 특별한 정보를 가지지않는 일반적인 스트링형태이지만
